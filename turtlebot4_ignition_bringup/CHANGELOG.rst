@@ -2,8 +2,8 @@
 Changelog for package turtlebot4_ignition_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.2 (2024-04-15)
+------------------
 * Update deprecated links (`#70 <https://github.com/turtlebot/turtlebot4_simulator/issues/70>`_)
   * Update deprecated links
   * Commented out models that are currently broken on the fuel server
