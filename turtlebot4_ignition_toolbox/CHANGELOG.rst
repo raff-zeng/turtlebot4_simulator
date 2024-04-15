@@ -2,6 +2,9 @@
 Changelog for package turtlebot4_ignition_toolbox
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.0.1 (2023-11-08)
 ------------------
 
