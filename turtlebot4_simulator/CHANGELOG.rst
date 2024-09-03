@@ -2,6 +2,14 @@
 Changelog for package turtlebot4_simulator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Ignition/ign rename to gz
+* Update dependencies for Gazebo Harmonic
+* Enable OSRF testing packages for Github CI
+* Initial Jazzy implementation (`#80 <https://github.com/turtlebot/turtlebot4_simulator/issues/80>`_)
+* Contributors: Chris Iverach-Brereton
+
 1.0.2 (2024-04-15)
 ------------------
 

@@ -2,6 +2,17 @@
 Changelog for package turtlebot4_gz_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Ignition/ign rename to gz
+* Update launch files to remove deprecations
+* Use new `view_navigation` launch for the `rviz` argument
+* Update dependencies for Gazebo Harmonic
+* Enable OSRF testing packages for Github CI
+* Initial Jazzy implementation (`#80 <https://github.com/turtlebot/turtlebot4_simulator/issues/80>`_)
+* Linting & formatting fixes
+* Contributors: Chris Iverach-Brereton
+
 1.0.2 (2024-04-15)
 ------------------
 * Update deprecated links (`#70 <https://github.com/turtlebot/turtlebot4_simulator/issues/70>`_)
