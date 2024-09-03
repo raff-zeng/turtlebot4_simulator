@@ -2,8 +2,8 @@
 Changelog for package turtlebot4_gz_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.0 (2024-09-03)
+------------------
 * Ignition/ign rename to gz
 * Update launch files to remove deprecations
 * Use new `view_navigation` launch for the `rviz` argument

@@ -2,8 +2,8 @@
 Changelog for package turtlebot4_gz_toolbox
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.0 (2024-09-03)
+------------------
 * Ignition/ign rename to gz
 * Update dependencies for Gazebo Harmonic
 * Enable OSRF testing packages for Github CI
