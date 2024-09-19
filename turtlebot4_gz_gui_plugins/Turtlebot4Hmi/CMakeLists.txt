@@ -17,8 +17,10 @@ find_package(Qt5
 )
 
 # Find the Gz gui library
-find_package(gz-gui8 REQUIRED)
-find_package(gz-common5 REQUIRED)
+find_package(gz_gui_vendor REQUIRED)
+find_package(gz-gui REQUIRED)
+find_package(gz_common_vendor REQUIRED)
+find_package(gz-common REQUIRED)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GZ-GUI_CXX_FLAGS}")
 
@@ -39,6 +41,7 @@ link_directories(
 )
 
 # Generate examples
+# MOC parsing is broken on Ionic: https://github.com/gazebosim/gz-msgs/issues/463
 add_library(Turtlebot4Hmi SHARED ${headers_MOC}
 Turtlebot4Hmi.cc
   ${resources_rcc}

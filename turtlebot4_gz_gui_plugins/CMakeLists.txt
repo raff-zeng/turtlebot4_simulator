@@ -7,6 +7,8 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(gz_gui_vendor REQUIRED)
+find_package(gz-gui)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
