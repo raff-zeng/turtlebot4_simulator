@@ -2,8 +2,8 @@
 Changelog for package turtlebot4_gz_gui_plugins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.1 (2024-09-25)
+------------------
 * Generalize gz vendor use and modernize CMake (`#82 <https://github.com/turtlebot/turtlebot4_simulator/issues/82>`_)
 * Contributors: Jose Luis Rivero
 
