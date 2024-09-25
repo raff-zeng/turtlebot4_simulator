@@ -2,6 +2,11 @@
 Changelog for package turtlebot4_gz_gui_plugins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Generalize gz vendor use and modernize CMake (`#82 <https://github.com/turtlebot/turtlebot4_simulator/issues/82>`_)
+* Contributors: Jose Luis Rivero
+
 2.0.0 (2024-09-03)
 ------------------
 * Ignition/ign rename to gz
