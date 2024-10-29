@@ -24,6 +24,7 @@
   <depend>irobot_create_nodes</depend>
   <depend>irobot_create_toolbox</depend>
   <depend>irobot_create_gz_bringup</depend>
+  <depend>irobot_create_gz_plugins</depend>
   <depend>irobot_create_gz_toolbox</depend>
 
   <!-- ROS IGN -->
