@@ -88,6 +88,7 @@ def generate_launch_description():
             ('gz_args', [
                 LaunchConfiguration('world'),
                 '.sdf',
+                ' -r',
                 ' -v 4',
                 ' --gui-config ',
                 PathJoinSubstitution([
