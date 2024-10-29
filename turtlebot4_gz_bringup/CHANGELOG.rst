@@ -2,8 +2,8 @@
 Changelog for package turtlebot4_gz_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.2 (2024-10-29)
+------------------
 * Add -r flag to Gazebo arguments (see https://github.com/turtlebot/turtlebot4_simulator/issues/81)
 * Add missing dependency on create3_gz_plugins
 * Contributors: Chris Iverach-Brereton
