@@ -41,12 +41,15 @@ ARGUMENTS = [
                           description='Turtlebot4 Model'),
     DeclareLaunchArgument('namespace', default_value='',
                           description='Robot namespace'),
+    # 定位功能
     DeclareLaunchArgument('localization', default_value='false',
                           choices=['true', 'false'],
                           description='Whether to launch localization'),
+    # SLAM功能
     DeclareLaunchArgument('slam', default_value='false',
                           choices=['true', 'false'],
                           description='Whether to launch SLAM'),
+    # 导航功能
     DeclareLaunchArgument('nav2', default_value='false',
                           choices=['true', 'false'],
                           description='Whether to launch Nav2'),
@@ -59,7 +62,7 @@ for pose_element in ['x', 'y', 'z', 'yaw']:
 
 def generate_launch_description():
 
-    # Directories
+    # 获取各个功能包路径
     pkg_turtlebot4_ignition_bringup = get_package_share_directory(
         'turtlebot4_ignition_bringup')
     pkg_turtlebot4_description = get_package_share_directory(
@@ -112,16 +115,16 @@ def generate_launch_description():
     robot_name = GetNamespacedName(namespace, 'turtlebot4')
     dock_name = GetNamespacedName(namespace, 'standard_dock')
 
-    # Calculate dock offset due to yaw rotation
+    # 计算由于偏航旋转导致的充电桩偏移
     dock_offset_x = RotationalOffsetX(0.157, yaw)
     dock_offset_y = RotationalOffsetY(0.157, yaw)
-    # Spawn dock at robot position + rotational offset
+    # 在机器人位置加上旋转偏移后生成充电桩
     x_dock = OffsetParser(x, dock_offset_x)
     y_dock = OffsetParser(y, dock_offset_y)
-    # Spawn robot slightly clsoer to the floor to reduce the drop
-    # Ensures robot remains properly docked after the drop
+    # 将机器人生成位置稍微靠近地面以减少掉落
+    # 确保机器人在掉落后保持正确对接
     z_robot = OffsetParser(z, -0.0025)
-    # Rotate dock towards robot
+    # 将充电桩朝向机器人旋转
     yaw_dock = OffsetParser(yaw, 3.1416)
 
     spawn_robot_group_action = GroupAction([
@@ -141,6 +144,7 @@ def generate_launch_description():
             launch_arguments={'gazebo': 'ignition'}.items(),
         ),
 
+        # 生成机器人
         # Spawn TurtleBot 4
         Node(
             package='ros_ign_gazebo',
@@ -154,6 +158,7 @@ def generate_launch_description():
             output='screen'
         ),
 
+        # 生成充电桩
         # Spawn Dock
         Node(
             package='ros_ign_gazebo',
@@ -167,6 +172,7 @@ def generate_launch_description():
             output='screen',
         ),
 
+        # ROS-Ignition桥接
         # ROS IGN bridge
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource([turtlebot4_ros_ign_bridge_launch]),
@@ -201,6 +207,7 @@ def generate_launch_description():
             ]
         ),
 
+        # RPLIDAR激光雷达TF
         # RPLIDAR static transforms
         Node(
             name='rplidar_stf',
@@ -216,6 +223,7 @@ def generate_launch_description():
             ]
         ),
 
+        # OAKD相机TF
         # OAKD static transform
         # Required for pointcloud. See https://github.com/gazebosim/gz-sensors/issues/239
         Node(

@@ -27,19 +27,22 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 
-
+# 1. 启动参数定义
 ARGUMENTS = [
+    # 是否使用仿真时间
     DeclareLaunchArgument('use_sim_time', default_value='true',
                           choices=['true', 'false'],
                           description='use_sim_time'),
+    # 仿真世界选择
     DeclareLaunchArgument('world', default_value='warehouse',
                           description='Ignition World'),
+    # 机器人型号选择,standard或lite
     DeclareLaunchArgument('model', default_value='lite',
                           choices=['standard', 'lite'],
                           description='Turtlebot4 Model'),
 ]
 
-
+# 2. 资源路径配置
 def generate_launch_description():
 
     # Directories
@@ -62,22 +65,28 @@ def generate_launch_description():
     ign_resource_path = SetEnvironmentVariable(
         name='IGN_GAZEBO_RESOURCE_PATH',
         value=[
+            # 世界文件路径
             os.path.join(pkg_turtlebot4_ignition_bringup, 'worlds'), ':' +
             os.path.join(pkg_irobot_create_ignition_bringup, 'worlds'), ':' +
+            # 机器人描述文件路径
             str(Path(pkg_turtlebot4_description).parent.resolve()), ':' +
+            # Create机器人描述路径
             str(Path(pkg_irobot_create_description).parent.resolve())])
 
+    # 3. GUI插件路径
     ign_gui_plugin_path = SetEnvironmentVariable(
         name='IGN_GUI_PLUGIN_PATH',
         value=[
+            # TurtleBot4 GUI插件
             os.path.join(pkg_turtlebot4_ignition_gui_plugins, 'lib'), ':' +
+            # Create机器人GUI插件
             os.path.join(pkg_irobot_create_ignition_plugins, 'lib')])
 
     # Paths
     ign_gazebo_launch = PathJoinSubstitution(
         [pkg_ros_ign_gazebo, 'launch', 'ign_gazebo.launch.py'])
 
-    # Ignition gazebo
+    # 4. 启动Ignition仿真器
     ignition_gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([ign_gazebo_launch]),
         launch_arguments=[
@@ -94,7 +103,7 @@ def generate_launch_description():
         ]
     )
 
-    # Clock bridge
+    # 5. ROS-Ignition时钟桥接. 同步ROS和Ignition时钟
     clock_bridge = Node(package='ros_gz_bridge', executable='parameter_bridge',
                         name='clock_bridge',
                         output='screen',

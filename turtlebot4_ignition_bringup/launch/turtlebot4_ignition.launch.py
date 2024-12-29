@@ -24,15 +24,22 @@ from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 
 
 ARGUMENTS = [
+    # 机器人命名空间
     DeclareLaunchArgument('namespace', default_value='',
                           description='Robot namespace'),
+    # 是否启动rviz可视化
     DeclareLaunchArgument('rviz', default_value='false',
                           choices=['true', 'false'], description='Start rviz.'),
+    # 仿真世界选择,默认为warehouse
     DeclareLaunchArgument('world', default_value='warehouse',
                           description='Ignition World'),
+    # 机器人型号选择,standard或lite
     DeclareLaunchArgument('model', default_value='standard',
                           choices=['standard', 'lite'],
                           description='Turtlebot4 Model'),
+    # 机器人初始位姿参数x,y,z,yaw
+    # DeclareLaunchArgument('x', default_value='0.0'),
+    # DeclareLaunchArgument('y', default_value='0.0'), 
 ]
 
 for pose_element in ['x', 'y', 'z', 'yaw']:
@@ -51,6 +58,7 @@ def generate_launch_description():
     robot_spawn_launch = PathJoinSubstitution(
         [pkg_turtlebot4_ignition_bringup, 'launch', 'turtlebot4_spawn.launch.py'])
 
+    # 1. 启动Ignition仿真环境
     ignition = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([ignition_launch]),
         launch_arguments=[
@@ -58,6 +66,7 @@ def generate_launch_description():
         ]
     )
 
+    # 2. 生成机器人模型
     robot_spawn = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([robot_spawn_launch]),
         launch_arguments=[
