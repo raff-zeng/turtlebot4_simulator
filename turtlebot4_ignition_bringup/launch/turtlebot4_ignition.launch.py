@@ -30,14 +30,14 @@ ARGUMENTS = [
     # 是否启动rviz可视化
     DeclareLaunchArgument('rviz', default_value='false',
                           choices=['true', 'false'], description='Start rviz.'),
-    # 仿真世界选择,默认为warehouse
+    # 仿真世界选择,默认为 warehouse
     DeclareLaunchArgument('world', default_value='warehouse',
                           description='Ignition World'),
-    # 机器人型号选择,standard或lite
+    # 机器人型号选择, standard 或 lite
     DeclareLaunchArgument('model', default_value='standard',
                           choices=['standard', 'lite'],
                           description='Turtlebot4 Model'),
-    # 机器人初始位姿参数x,y,z,yaw
+    # 机器人初始位姿参数 x,y,z,yaw
     # DeclareLaunchArgument('x', default_value='0.0'),
     # DeclareLaunchArgument('y', default_value='0.0'), 
 ]
@@ -52,13 +52,14 @@ def generate_launch_description():
     pkg_turtlebot4_ignition_bringup = get_package_share_directory(
         'turtlebot4_ignition_bringup')
 
-    # Paths
+    # 使用 ignition.launch.py 启动 world 仿真环境
     ignition_launch = PathJoinSubstitution(
         [pkg_turtlebot4_ignition_bringup, 'launch', 'ignition.launch.py'])
+    # 使用 turtlebot4_spawn.launch.py 启动 robot 和算法
     robot_spawn_launch = PathJoinSubstitution(
         [pkg_turtlebot4_ignition_bringup, 'launch', 'turtlebot4_spawn.launch.py'])
 
-    # 1. 启动Ignition仿真环境
+    # 1. 启动 Ignition 仿真环境
     ignition = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([ignition_launch]),
         launch_arguments=[

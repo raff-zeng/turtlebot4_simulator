@@ -41,15 +41,15 @@ ARGUMENTS = [
                           description='Turtlebot4 Model'),
     DeclareLaunchArgument('namespace', default_value='',
                           description='Robot namespace'),
-    # 定位功能
+    # 定位
     DeclareLaunchArgument('localization', default_value='false',
                           choices=['true', 'false'],
                           description='Whether to launch localization'),
-    # SLAM功能
+    # SLAM
     DeclareLaunchArgument('slam', default_value='false',
                           choices=['true', 'false'],
                           description='Whether to launch SLAM'),
-    # 导航功能
+    # 导航
     DeclareLaunchArgument('nav2', default_value='false',
                           choices=['true', 'false'],
                           description='Whether to launch Nav2'),
@@ -245,7 +245,7 @@ def generate_launch_description():
 
     ])
 
-    # Localization
+    # 定位
     localization = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([localization_launch]),
         launch_arguments=[

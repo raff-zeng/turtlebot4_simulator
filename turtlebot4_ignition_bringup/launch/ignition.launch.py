@@ -61,7 +61,7 @@ def generate_launch_description():
     pkg_ros_ign_gazebo = get_package_share_directory(
         'ros_ign_gazebo')
 
-    # Set ignition resource path
+    # 设置 ignition 资源路径
     ign_resource_path = SetEnvironmentVariable(
         name='IGN_GAZEBO_RESOURCE_PATH',
         value=[
@@ -70,10 +70,10 @@ def generate_launch_description():
             os.path.join(pkg_irobot_create_ignition_bringup, 'worlds'), ':' +
             # 机器人描述文件路径
             str(Path(pkg_turtlebot4_description).parent.resolve()), ':' +
-            # Create机器人描述路径
+            # Create 机器人描述路径
             str(Path(pkg_irobot_create_description).parent.resolve())])
 
-    # 3. GUI插件路径
+    # 3. GUI 插件路径
     ign_gui_plugin_path = SetEnvironmentVariable(
         name='IGN_GUI_PLUGIN_PATH',
         value=[
