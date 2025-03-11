@@ -99,7 +99,7 @@ def generate_launch_description():
                             [pkg_turtlebot4_ignition_bringup,
                              'gui',
                              LaunchConfiguration('model'),
-                             'gui.config'])])
+                             'gui_raff.config'])])
         ]
     )
 
