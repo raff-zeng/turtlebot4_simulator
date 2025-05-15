@@ -28,18 +28,18 @@ ARGUMENTS = [
     DeclareLaunchArgument('namespace', default_value='',
                           description='Robot namespace'),
     # 是否启动rviz可视化
-    DeclareLaunchArgument('rviz', default_value='false',
+    DeclareLaunchArgument('rviz', default_value='true',
                           choices=['true', 'false'], description='Start rviz.'),
     # 仿真世界选择,默认为 warehouse
-    DeclareLaunchArgument('world', default_value='warehouse',
+    DeclareLaunchArgument('world', default_value='maze',
                           description='Ignition World'),
     # 机器人型号选择, standard 或 lite
-    DeclareLaunchArgument('model', default_value='standard',
+    DeclareLaunchArgument('model', default_value='lite',
                           choices=['standard', 'lite'],
                           description='Turtlebot4 Model'),
     # 机器人初始位姿参数 x,y,z,yaw
     # DeclareLaunchArgument('x', default_value='0.0'),
-    # DeclareLaunchArgument('y', default_value='0.0'), 
+    # DeclareLaunchArgument('y', default_value='0.0'),
 ]
 
 for pose_element in ['x', 'y', 'z', 'yaw']:
